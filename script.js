@@ -107,19 +107,7 @@ function speak(text){
 
 
 
-   async function query(data) {
-    const response = await fetch(
-      "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill",
-      {
-        headers: { Authorization: "Bearer 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" },
-        method: "POST",
-        body: JSON.stringify(data),
-      }
-    );
-    const result = await response.json();
-    return result;
-  }
-  
+   
 
 
 //////////////
@@ -136,20 +124,16 @@ recognition.onresult = function(event) {
 
      if(data == "english"){
       appendMessage("right",command)
-      // AiFetchData(command)
+      AiFetchData(command)
 
-      query(command).then((response) => {
-        console.log(response.generated_text);
-        speak(response.generated_text)
-      });
+      
 
       console.log(command)
 
      }
      else{
       appendMessage("right",command)
-      // AiFetchDataFrench(command)
-      console.log(command)
+      AiFetchDataFrench(command)
      }
      
       
@@ -190,16 +174,11 @@ msgerForm.addEventListener("submit", event => {
 
   if(data == "english"){
     appendMessage("right",msgText)
-
-    query(msgText).then((response) => {
-      console.log(response.generated_text);
-      speak(response.generated_text)
-    });
+    AiFetchData(msgText)
   }
     else{
     appendMessage("right",msgText)
     AiFetchDataFrench(msgText)
-    
    }
 
 //   botResponse();
