@@ -126,10 +126,6 @@ recognition.onresult = function(event) {
       appendMessage("right",command)
       AiFetchData(command)
 
-      
-
-      console.log(command)
-
      }
      else{
       appendMessage("right",command)
